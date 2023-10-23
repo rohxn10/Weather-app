@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1e5195a634.js" crossorigin="anonymous"></script>
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="heading">
+        <center><h1><i class="fa-solid fa-cloud"></i>SkySync</h1></center>
+    </div>
+    <div class="card center">
+        <div class="search">
+            <form action="/search" method="POST" class="search-bar">
+                
+                <input type="text" placeholder="Enter a city name" name ="cityName" required>
+                <!-- <input id="search-btn" type="submit" value="Search">
+                     -->
+                <button id="search-btn">Search</button>                
+            </form>
+        </div>
+        <%  if(locals.content){%>   
+            <% if (locals.content.error) {%>
+                <h1>Invalid search</h1>
+            <% } else{ %>
+                <% if( content.image =="Clear") {%>
+                    <img src="/images/clear.png" alt="clear"> 
+                    <p><%= content.image %></p>
+                <% } %>
+                <% if( content.image =="Drizzle") {%>
+                    <img src="/images/drizzle.png" alt="clear"> 
+                    <p><%= content.image %></p>
+                <% } %>
+                <% if( content.image =="Clouds") {%>
+                    <img src="/images/clouds.png" alt="clear"> 
+                    <p><%= content.image %></p>
+                <% } %>
+                <% if( content.image =="Mist") {%>
+                    <img src="/images/mist.png" alt="clear"> 
+                    <p><%= content.image %></p>
+                <% } %>
+                <% if( content.image =="Rain") {%>
+                    <img src="/images/rain.png" alt="clear"> 
+                    <p><%= content.image %></p>
+                <% } %>
+                <% if( content.image =="Snow") {%>
+                    <img src="/images/snow.png" alt="clear">
+                    <p><%= content.image %></p> 
+                <% } %>
+                <% if( content.image =="Haze") {%>
+                    <img src="/images/haze.png" alt="clear">
+                    <p><%= content.image %></p> 
+                <% } %>
+                <h1><%= content.name %></h1>
+                <h1><%= content.temp%></h1>
+                <div class="bottom">    
+                    <!-- <img class="bt-image" src="/images/humidity.png" alt="hummidity.png"> -->
+                    <i class="fa-solid fa-water"></i>
+                    <span>Humidity</span>
+                    <span><%= content.humidity %></span>
+                </div>
+                <div style="margin-bottom: 20px;">    
+                    <!-- <img class="bt-image" src="/images/wind.png" alt="wind.png"> -->
+                    <i class="fa-solid fa-wind"></i>
+                    <span>Wind Speed</span>
+                    <span><%= content.wind %></span>
+                </div>
+            <% } %>        
+       <% } else { %> 
+            <h1>Search for a city</h1>
+        <% } %>
+    </div>
+</body>
+</html>
